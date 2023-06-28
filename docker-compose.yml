@@ -17,7 +17,7 @@ services:
     image: clickhouse/clickhouse-server:22.8.13.20-alpine
     restart: always
     volumes:
-      - event-data:/var/lib/clickhouse
+      - ./event-data/clickhouse:/var/lib/clickhouse
       - ./clickhouse/clickhouse-config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
       - ./clickhouse/clickhouse-user-config.xml:/etc/clickhouse-server/users.d/logging.xml:ro
     ulimits:
@@ -34,14 +34,12 @@ services:
       - plausible_events_db
       - mail
     ports:
-      - 8000:8000
+      - 9009:8000
     env_file:
       - plausible-conf.env
 
 volumes:
   db-data:
-    driver: local
-  event-data:
     driver: local
   geoip:
     driver: local
