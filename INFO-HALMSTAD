@@ -1,0 +1,16 @@
+OM
+Författat av Jacob Wodzynski
+Uppdaterat 2022-05-22
+
+ALLMÄNT
+Plausible körs endast på lx-sr0723. Det är en skillnad mot våra övriga tillämpningar,
+(QGIS, GeoServer), som körs på båda maskinerna. Anledningen är att Plausible har sitt lokala
+store i containern där statistiken lagras - driftar vi den på båda och lastbalanseraren 
+sprider ut skrivningarna så får vi ofullständig statistik på två ställen istället för det vi vill.
+
+FRAMTIDA UTVECKLING
+Det finns naturligtvis utvecklingspontential i att försöka se om Plausible kan hantera delad
+Docker-volym. I så fall läggs volymen på den gemensamma ytan och vi hade kunnat lastbalansera
+även denna tjänst.
+
+
